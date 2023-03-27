@@ -47,3 +47,6 @@ true
 0.71428573
 RAFAEL (2F) RAPHAEL (2F)
 ```
+
+## Dependency
+[Levenshtein](https://github.com/Darklabel91/Levenshtein)
