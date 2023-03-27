@@ -113,7 +113,7 @@ func IsMetaphoneSimilar(metaphone1, metaphone2 string) bool {
 		margin = 1
 	}
 
-	if levenshtein.Distance(metaphone1, metaphone2) <= margin {
+	if Levenshtein.Distance(metaphone1, metaphone2) <= margin {
 		return true
 	}
 	return false
@@ -129,7 +129,7 @@ func SimilarityBetweenWords(word1, word2 string) float32 {
 		maxsize = float32(len(word1))
 	}
 
-	return 1.0 - (float32(levenshtein.Distance(word1, word2)) / maxsize)
+	return 1.0 - (float32(Levenshtein.Distance(word1, word2)) / maxsize)
 }
 
 //init sequence of regexp
