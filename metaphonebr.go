@@ -1,7 +1,7 @@
 package metaphone
 
 import (
-	"github.com/Darklabel91/API_Names/levenshtein"
+	"github.com/Darklabel91/Levenshtein"
 	"regexp"
 	"strings"
 )
