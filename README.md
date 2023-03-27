@@ -1,5 +1,5 @@
-# metaphone-br
-go metaphone function
+# Metaphone-br
+Metaphone package in Brazilian portugue for go language
 
 
 ## Install
@@ -36,7 +36,7 @@ func main() {
 	//parsing word
 	parsedWord1 := Metaphone.Parse(word1)
 	parsedWord2 := Metaphone.Parse(word2)
-  fmt.Println(parsedWord1, parsedWord2)
+  	fmt.Println(parsedWord1, parsedWord2)
 }
 ```
 
