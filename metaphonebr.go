@@ -1,4 +1,4 @@
-package metaphone
+package Metaphone
 
 import (
 	"github.com/Darklabel91/Levenshtein"
