@@ -10,14 +10,14 @@ type WordType struct {
 	MTFs  []string
 }
 
-func (n WordType) String() string {
-	s := strings.Join(n.Words, " ")
-	s += " (" + strings.Join(n.MTFs, " ") + ")"
+func (wt WordType) String() string {
+	s := strings.Join(wt.Words, " ")
+	s += " (" + strings.Join(wt.MTFs, " ") + ")"
 
 	return s
 }
 
-func (n WordType) Sim(name2 *WordType) (float32, error) {
+func (wt WordType) Sim(name2 *WordType) (float32, error) {
 	var (
 		j, pos, matches, prepositionsAmount1, prepositionsAmount2 int
 		sim                                                       float32
@@ -25,11 +25,11 @@ func (n WordType) Sim(name2 *WordType) (float32, error) {
 
 	maxSimilarity := MaxSimilarity
 
-	for i, mtf1 := range n.MTFs {
+	for i, mtf1 := range wt.MTFs {
 		if prepositionsAmount2 > 0 {
 			prepositionsAmount2 = 0
 		}
-		if prepositions[n.Words[i]] {
+		if prepositions[wt.Words[i]] {
 			prepositionsAmount1++
 			continue
 		}
@@ -42,10 +42,10 @@ func (n WordType) Sim(name2 *WordType) (float32, error) {
 			}
 			mtf2 := name2.MTFs[j]
 			if mtf1 == mtf2 {
-				sim = SimilarityBetweenWords(n.Words[i], name2.Words[j])
+				sim = SimilarityBetweenWords(wt.Words[i], name2.Words[j])
 				break
 			} else if IsMetaphoneSimilar(mtf1, mtf2) {
-				sim = SimilarityBetweenWords(n.Words[i], name2.Words[j])
+				sim = SimilarityBetweenWords(wt.Words[i], name2.Words[j])
 				break
 			}
 		}
@@ -61,12 +61,12 @@ func (n WordType) Sim(name2 *WordType) (float32, error) {
 		}
 	}
 
-	sim = maxSimilarity * (2.0 * float32(matches) / float32(len(n.Words)+len(name2.Words)-prepositionsAmount1))
+	sim = maxSimilarity * (2.0 * float32(matches) / float32(len(wt.Words)+len(name2.Words)-prepositionsAmount1))
 
 	return sim, nil
 }
 
-func (n WordType) SimString(name string) (float32, error) {
+func (wt WordType) SimString(name string) (float32, error) {
 	var pes2 *WordType
 
 	pes2 = Parse(name)
@@ -74,5 +74,5 @@ func (n WordType) SimString(name string) (float32, error) {
 		return -1, errors.New("invalid name")
 	}
 
-	return n.Sim(pes2)
+	return wt.Sim(pes2)
 }
