@@ -1,13 +1,14 @@
 # Metaphone-br
-Metaphone package in Brazilian portugue for go language
-
+It is a Go implementation of the Metaphone phonetic algorithm for brazilian portuguese. It provides a way to generate a phonetic representation of a given string, which can be used for tasks such as string matching and deduplication.
 
 ## Install
+You can install Metaphone using Go's built-in package manager, go get:
 ``` 
 go get github.com/Darklabel91/metaphone-br
 ```
 
-## Examples
+## Usage
+Here's a simple example of how to use Metaphone:
 ```go
 package main
 
@@ -40,7 +41,7 @@ func main() {
 }
 ```
 
-Return
+This will be the output:
 ```
 2F 2F
 true
@@ -48,5 +49,10 @@ true
 RAFAEL (2F) RAPHAEL (2F)
 ```
 
+## Testing
+Metaphone-br comes with a set of tests that you can run using Go's built-in testing tool:
+```go
+go test
+```
 ## Dependency
 [Levenshtein](https://github.com/Darklabel91/Levenshtein)
